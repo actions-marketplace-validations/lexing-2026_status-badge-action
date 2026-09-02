@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="289"
+  viewBox="0 0 800 289" role="img" aria-label="MEGA Hub status: status history">
+
+  <a href="https://status.tensorplay.cn" xlink:href="https://status.tensorplay.cn" target="_blank" rel="noopener">
+  <defs>
+    <radialGradient id="bsbhd-dot" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </radialGradient>
+    <linearGradient id="bsbhd-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#22C55E" stop-opacity="0.25"/>
+    </linearGradient>
+    <clipPath id="bsbhd-clip">
+      <rect x="0.5" y="0.5" width="800" height="289" rx="13"/>
+    </clipPath>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="800" height="289" rx="13"
+    fill="#0D1117" stroke="#30363D"/>
+
+  <g clip-path="url(#bsbhd-clip)">
+    <rect x="0" y="0" width="4.5" height="289"
+      fill="url(#bsbhd-accent)"/>
+  </g>
+
+  <g>
+    <clipPath id="bsbhd-logoclip">
+      <circle cx="28" cy="24" r="11"/>
+    </clipPath>
+    <image x="17" y="13" width="22" height="22" href="data:image/png;base64,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"
+      xlink:href="data:image/png;base64,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" clip-path="url(#bsbhd-logoclip)"
+      preserveAspectRatio="xMidYMid meet"/>
+    <circle cx="28" cy="24" r="11" fill="none" stroke="#30363D"/>
+  </g>
+  <text x="46" y="29" fill="#F0F6FC"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14.5" font-weight="700">MEGA Hub status</text>
+  <text x="46" y="49" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="10.5">Last 90 days · Updated Sep 02 · 17:16 UTC</text>
+
+  
+  <g>
+    <rect x="689.1" y="12" width="90.9" height="22" rx="11"
+      fill="#EF4444" opacity="0.12"/>
+    <rect x="689.1" y="12" width="90.9" height="22" rx="11"
+      fill="none" stroke="#EF4444" stroke-opacity="0.25"/>
+  </g>
+  <g transform="translate(704.6 23.0)"><circle cx="0" cy="0" r="5.5" fill="#EF4444"/><path d="M-2.10 -2.10 L2.10 2.10 M2.10 -2.10 L-2.10 2.10" fill="none" stroke="#fff" stroke-width="1.70" stroke-linecap="round"/></g>
+  <text x="715.1" y="27" fill="#EF4444"
+    font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" font-weight="600">Downtime</text>
+
+  <line x1="24" y1="58" x2="776" y2="58"
+    stroke="#30363D" stroke-width="1"/>
+
+  <text x="24" y="84" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="11" font-weight="600">Core Service</text>
+  <g transform="translate(29.5 111.0)"><circle cx="0" cy="0" r="5.5" fill="#22C55E"/><path d="M-2.70 0.20 L-0.80 2.10 L2.80 -2.00" fill="none" stroke="#fff" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="41.0" y="115.5" fill="#F0F6FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="12.5" font-weight="600">MEGA Hub</text>
+  <text x="776.0" y="115.5" text-anchor="end"
+    fill="#4ADE80" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5"
+    font-weight="600">99.955% uptime</text>
+  <rect x="24.00" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 05 · not_monitored</title></rect>
+<rect x="32.39" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 06 · not_monitored</title></rect>
+<rect x="40.78" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 07 · not_monitored</title></rect>
+<rect x="49.16" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 08 · not_monitored</title></rect>
+<rect x="57.55" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 09 · not_monitored</title></rect>
+<rect x="65.94" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 10 · not_monitored</title></rect>
+<rect x="74.33" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 11 · not_monitored</title></rect>
+<rect x="82.72" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 12 · not_monitored</title></rect>
+<rect x="91.10" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 13 · not_monitored</title></rect>
+<rect x="99.49" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 14 · not_monitored</title></rect>
+<rect x="107.88" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 15 · not_monitored</title></rect>
+<rect x="116.27" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 16 · not_monitored</title></rect>
+<rect x="124.66" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 17 · not_monitored</title></rect>
+<rect x="133.04" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 18 · not_monitored</title></rect>
+<rect x="141.43" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 19 · not_monitored</title></rect>
+<rect x="149.82" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 20 · not_monitored</title></rect>
+<rect x="158.21" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 21 · not_monitored</title></rect>
+<rect x="166.60" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 22 · not_monitored</title></rect>
+<rect x="174.98" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 23 · not_monitored</title></rect>
+<rect x="183.37" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 24 · not_monitored</title></rect>
+<rect x="191.76" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 25 · not_monitored</title></rect>
+<rect x="200.15" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 26 · not_monitored</title></rect>
+<rect x="208.54" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 27 · not_monitored</title></rect>
+<rect x="216.92" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 28 · not_monitored</title></rect>
+<rect x="225.31" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 29 · not_monitored</title></rect>
+<rect x="233.70" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 30 · not_monitored</title></rect>
+<rect x="242.09" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 01 · not_monitored</title></rect>
+<rect x="250.48" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 02 · not_monitored</title></rect>
+<rect x="258.86" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 03 · not_monitored</title></rect>
+<rect x="267.25" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 04 · not_monitored</title></rect>
+<rect x="275.64" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 05 · not_monitored</title></rect>
+<rect x="284.03" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 06 · not_monitored</title></rect>
+<rect x="292.42" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 07 · not_monitored</title></rect>
+<rect x="300.80" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 08 · not_monitored</title></rect>
+<rect x="309.19" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 09 · not_monitored</title></rect>
+<rect x="317.58" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 10 · not_monitored</title></rect>
+<rect x="325.97" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 11 · not_monitored</title></rect>
+<rect x="334.36" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 12 · not_monitored</title></rect>
+<rect x="342.74" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 13 · not_monitored</title></rect>
+<rect x="351.13" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 14 · not_monitored</title></rect>
+<rect x="359.52" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 15 · not_monitored</title></rect>
+<rect x="367.91" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 16 · not_monitored</title></rect>
+<rect x="376.30" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 17 · not_monitored</title></rect>
+<rect x="384.68" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 18 · not_monitored</title></rect>
+<rect x="393.07" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 19 · not_monitored</title></rect>
+<rect x="401.46" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 20 · not_monitored</title></rect>
+<rect x="409.85" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 21 · not_monitored</title></rect>
+<rect x="418.24" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 22 · not_monitored</title></rect>
+<rect x="426.62" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 23 · not_monitored</title></rect>
+<rect x="435.01" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 24 · not_monitored</title></rect>
+<rect x="443.40" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 25 · not_monitored</title></rect>
+<rect x="451.79" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 26 · not_monitored</title></rect>
+<rect x="460.18" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 27 · not_monitored</title></rect>
+<rect x="468.56" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 28 · not_monitored</title></rect>
+<rect x="476.95" y="123" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 29 · not_monitored</title></rect>
+<rect x="485.34" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Jul 30 · Operational</title></rect>
+<rect x="493.73" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Jul 31 · Operational</title></rect>
+<rect x="502.12" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 01 · Operational</title></rect>
+<rect x="510.50" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 02 · Operational</title></rect>
+<rect x="518.89" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 03 · Operational</title></rect>
+<rect x="527.28" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 04 · Operational</title></rect>
+<rect x="535.67" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 05 · Operational</title></rect>
+<g><title>Aug 06 · Downtime · down 21m</title><rect x="544.06" y="123.00" width="5.47" height="27.58" fill="#22C55E"/><rect x="544.06" y="150.58" width="5.47" height="0.42" fill="#EF4444"/></g>
+<rect x="552.44" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 07 · Operational</title></rect>
+<rect x="560.83" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 08 · Operational</title></rect>
+<rect x="569.22" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 09 · Operational</title></rect>
+<rect x="577.61" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 10 · Operational</title></rect>
+<rect x="586.00" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 11 · Operational</title></rect>
+<rect x="594.38" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 12 · Operational</title></rect>
+<rect x="602.77" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 13 · Operational</title></rect>
+<rect x="611.16" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 14 · Operational</title></rect>
+<rect x="619.55" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 15 · Operational</title></rect>
+<rect x="627.94" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 16 · Operational</title></rect>
+<rect x="636.32" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 17 · Operational</title></rect>
+<rect x="644.71" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 18 · Operational</title></rect>
+<rect x="653.10" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 19 · Operational</title></rect>
+<rect x="661.49" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 20 · Operational</title></rect>
+<rect x="669.88" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 21 · Operational</title></rect>
+<rect x="678.26" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 22 · Operational</title></rect>
+<rect x="686.65" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 23 · Operational</title></rect>
+<rect x="695.04" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 24 · Operational</title></rect>
+<rect x="703.43" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 25 · Operational</title></rect>
+<rect x="711.82" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 26 · Operational</title></rect>
+<rect x="720.20" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 27 · Operational</title></rect>
+<rect x="728.59" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 28 · Operational</title></rect>
+<rect x="736.98" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 29 · Operational</title></rect>
+<rect x="745.37" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 30 · Operational</title></rect>
+<rect x="753.76" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 31 · Operational</title></rect>
+<rect x="762.14" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Sep 01 · Operational</title></rect>
+<rect x="770.53" y="123" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Sep 02 · Operational</title></rect>
+  <text x="24.0" y="165" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="10.5">90 days ago</text>
+  <text x="776.0" y="165" text-anchor="end"
+    fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">Today</text>
+  <g transform="translate(29.5 193.0)"><circle cx="0" cy="0" r="5.5" fill="#EF4444"/><path d="M-2.10 -2.10 L2.10 2.10 M2.10 -2.10 L-2.10 2.10" fill="none" stroke="#fff" stroke-width="1.70" stroke-linecap="round"/></g>
+  <text x="41.0" y="197.5" fill="#F0F6FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="12.5" font-weight="600">Git Hosting</text>
+  <text x="776.0" y="197.5" text-anchor="end"
+    fill="#F0F6FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5"
+    font-weight="600">97.462% uptime</text>
+  <rect x="24.00" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 05 · not_monitored</title></rect>
+<rect x="32.39" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 06 · not_monitored</title></rect>
+<rect x="40.78" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 07 · not_monitored</title></rect>
+<rect x="49.16" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 08 · not_monitored</title></rect>
+<rect x="57.55" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 09 · not_monitored</title></rect>
+<rect x="65.94" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 10 · not_monitored</title></rect>
+<rect x="74.33" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 11 · not_monitored</title></rect>
+<rect x="82.72" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 12 · not_monitored</title></rect>
+<rect x="91.10" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 13 · not_monitored</title></rect>
+<rect x="99.49" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 14 · not_monitored</title></rect>
+<rect x="107.88" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 15 · not_monitored</title></rect>
+<rect x="116.27" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 16 · not_monitored</title></rect>
+<rect x="124.66" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 17 · not_monitored</title></rect>
+<rect x="133.04" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 18 · not_monitored</title></rect>
+<rect x="141.43" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 19 · not_monitored</title></rect>
+<rect x="149.82" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 20 · not_monitored</title></rect>
+<rect x="158.21" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 21 · not_monitored</title></rect>
+<rect x="166.60" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 22 · not_monitored</title></rect>
+<rect x="174.98" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 23 · not_monitored</title></rect>
+<rect x="183.37" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 24 · not_monitored</title></rect>
+<rect x="191.76" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 25 · not_monitored</title></rect>
+<rect x="200.15" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 26 · not_monitored</title></rect>
+<rect x="208.54" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 27 · not_monitored</title></rect>
+<rect x="216.92" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 28 · not_monitored</title></rect>
+<rect x="225.31" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 29 · not_monitored</title></rect>
+<rect x="233.70" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jun 30 · not_monitored</title></rect>
+<rect x="242.09" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 01 · not_monitored</title></rect>
+<rect x="250.48" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 02 · not_monitored</title></rect>
+<rect x="258.86" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 03 · not_monitored</title></rect>
+<rect x="267.25" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 04 · not_monitored</title></rect>
+<rect x="275.64" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 05 · not_monitored</title></rect>
+<rect x="284.03" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 06 · not_monitored</title></rect>
+<rect x="292.42" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 07 · not_monitored</title></rect>
+<rect x="300.80" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 08 · not_monitored</title></rect>
+<rect x="309.19" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 09 · not_monitored</title></rect>
+<rect x="317.58" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 10 · not_monitored</title></rect>
+<rect x="325.97" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 11 · not_monitored</title></rect>
+<rect x="334.36" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 12 · not_monitored</title></rect>
+<rect x="342.74" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 13 · not_monitored</title></rect>
+<rect x="351.13" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 14 · not_monitored</title></rect>
+<rect x="359.52" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 15 · not_monitored</title></rect>
+<rect x="367.91" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 16 · not_monitored</title></rect>
+<rect x="376.30" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 17 · not_monitored</title></rect>
+<rect x="384.68" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 18 · not_monitored</title></rect>
+<rect x="393.07" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 19 · not_monitored</title></rect>
+<rect x="401.46" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 20 · not_monitored</title></rect>
+<rect x="409.85" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 21 · not_monitored</title></rect>
+<rect x="418.24" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 22 · not_monitored</title></rect>
+<rect x="426.62" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 23 · not_monitored</title></rect>
+<rect x="435.01" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 24 · not_monitored</title></rect>
+<rect x="443.40" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 25 · not_monitored</title></rect>
+<rect x="451.79" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 26 · not_monitored</title></rect>
+<rect x="460.18" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 27 · not_monitored</title></rect>
+<rect x="468.56" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 28 · not_monitored</title></rect>
+<rect x="476.95" y="205" width="5.47" height="28" rx="2.73" fill="#262D36"><title>Jul 29 · not_monitored</title></rect>
+<rect x="485.34" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Jul 30 · Operational</title></rect>
+<rect x="493.73" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Jul 31 · Operational</title></rect>
+<rect x="502.12" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 01 · Operational</title></rect>
+<rect x="510.50" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 02 · Operational</title></rect>
+<rect x="518.89" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 03 · Operational</title></rect>
+<rect x="527.28" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 04 · Operational</title></rect>
+<rect x="535.67" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 05 · Operational</title></rect>
+<rect x="544.06" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 06 · Operational</title></rect>
+<rect x="552.44" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 07 · Operational</title></rect>
+<rect x="560.83" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 08 · Operational</title></rect>
+<rect x="569.22" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 09 · Operational</title></rect>
+<rect x="577.61" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 10 · Operational</title></rect>
+<rect x="586.00" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 11 · Operational</title></rect>
+<rect x="594.38" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 12 · Operational</title></rect>
+<rect x="602.77" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 13 · Operational</title></rect>
+<rect x="611.16" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 14 · Operational</title></rect>
+<rect x="619.55" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 15 · Operational</title></rect>
+<rect x="627.94" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 16 · Operational</title></rect>
+<rect x="636.32" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 17 · Operational</title></rect>
+<rect x="644.71" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 18 · Operational</title></rect>
+<rect x="653.10" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 19 · Operational</title></rect>
+<rect x="661.49" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 20 · Operational</title></rect>
+<rect x="669.88" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 21 · Operational</title></rect>
+<rect x="678.26" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 22 · Operational</title></rect>
+<rect x="686.65" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 23 · Operational</title></rect>
+<rect x="695.04" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 24 · Operational</title></rect>
+<rect x="703.43" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 25 · Operational</title></rect>
+<rect x="711.82" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 26 · Operational</title></rect>
+<rect x="720.20" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 27 · Operational</title></rect>
+<rect x="728.59" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 28 · Operational</title></rect>
+<rect x="736.98" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 29 · Operational</title></rect>
+<rect x="745.37" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 30 · Operational</title></rect>
+<rect x="753.76" y="205" width="5.47" height="28" rx="2.73" fill="#22C55E"><title>Aug 31 · Operational</title></rect>
+<g><title>Sep 01 · Downtime · down 6h 3m</title><rect x="762.14" y="205.00" width="5.47" height="20.94" fill="#22C55E"/><rect x="762.14" y="225.94" width="5.47" height="7.06" fill="#EF4444"/></g>
+<g><title>Sep 02 · Downtime · down 14h 45m</title><rect x="770.53" y="205.00" width="5.47" height="10.77" fill="#22C55E"/><rect x="770.53" y="215.77" width="5.47" height="17.23" fill="#EF4444"/></g>
+  <text x="24.0" y="247" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+    font-size="10.5">90 days ago</text>
+  <text x="776.0" y="247" text-anchor="end"
+    fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">Today</text>
+
+  <circle cx="238.6" cy="269" r="4" fill="#22C55E"/><text x="248.6" y="273" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">Operational</text>
+<circle cx="331.6" cy="269" r="4" fill="#A9E5C6"/><text x="341.6" y="273" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">Maintenance</text>
+<circle cx="431.9" cy="269" r="4" fill="#EF4444"/><text x="441.9" y="273" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">Downtime</text>
+<circle cx="520.2" cy="269" r="4" fill="#262D36"/><text x="530.2" y="273" fill="#8B949E" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="10.5">No data</text>
+  </a>
+</svg>

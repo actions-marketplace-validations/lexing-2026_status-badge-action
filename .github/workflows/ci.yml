@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Syntax check
+        run: python -m py_compile generate.py
+
+      - name: Validate action.yml
+        run: |
+          python - <<'EOF'
+          import yaml
+          with open("action.yml") as f:
+              action = yaml.safe_load(f)
+          assert action["name"], "missing name"
+          assert action["runs"]["using"] == "composite"
+          print("action.yml OK:", action["name"])
+          EOF
+
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate badge (offline fallback path)
+        run: |
+          python3 generate.py --url https://invalid.example.invalid \
+            --title "CI test" --output ci-light.svg --output-dark ci-dark.svg \
+            --output-adaptive ci-adaptive.svg --output-history ci-history.svg
+          for f in ci-light.svg ci-dark.svg ci-adaptive.svg ci-history.svg; do
+            grep -q "</svg>" "$f"
+          done
+          echo "smoke OK (graceful degradation works)"

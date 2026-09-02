@@ -1,0 +1,154 @@
+name: "Status Badge Action"
+description: "Generate beautiful animated SVG status badges (light/dark/adaptive) from a Better Stack status page"
+
+branding:
+  icon: activity
+  color: green
+
+inputs:
+  status_url:
+    description: "Better Stack status page URL (e.g. https://status.betterstack.com)"
+    required: true
+
+  title:
+    description: "Badge title"
+    required: false
+    default: "System status"
+
+  output:
+    description: "Light SVG output path"
+    required: false
+    default: "status.svg"
+
+  output_dark:
+    description: "Dark SVG output path"
+    required: false
+    default: "status-dark.svg"
+
+  output_adaptive:
+    description: "Optional single SVG that adapts to prefers-color-scheme (empty = disabled)"
+    required: false
+    default: ""
+
+  output_history:
+    description: "History card SVG with per-day status bars (empty = disabled)"
+    required: false
+    default: ""
+
+  output_history_dark:
+    description: "Dark history card output path (empty = disabled)"
+    required: false
+    default: ""
+
+  output_history_adaptive:
+    description: "Single self-adapting history card output path (empty = disabled)"
+    required: false
+    default: ""
+
+  days:
+    description: "History window in days"
+    required: false
+    default: "90"
+
+  history_width:
+    description: "History card width in px"
+    required: false
+    default: "800"
+
+  link:
+    description: "URL embedded in the SVG (empty = the status page URL)"
+    required: false
+    default: ""
+
+  show_link:
+    description: "Embed a hyperlink in the SVG ('true' or 'false')"
+    required: false
+    default: "true"
+
+  show_events:
+    description: "Show the latest announcement / incident line ('true' or 'false')"
+    required: false
+    default: "true"
+
+  show_uptime:
+    description: "Show uptime / services online pill ('true' or 'false')"
+    required: false
+    default: "true"
+
+  show_updated:
+    description: "Show 'Updated …' timestamp ('true' or 'false')"
+    required: false
+    default: "true"
+
+  show_logo:
+    description: "Embed the status page logo next to the title ('true' or 'false')"
+    required: false
+    default: "true"
+
+  static:
+    description: "Disable the pulsing-dot animation ('true' or 'false')"
+    required: false
+    default: "false"
+
+  min_width:
+    description: "Minimum card width in px"
+    required: false
+    default: "440"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Generate status badge
+      shell: bash
+      env:
+        STATUS_URL: ${{ inputs.status_url }}
+        TITLE: ${{ inputs.title }}
+        OUTPUT: ${{ inputs.output }}
+        OUTPUT_DARK: ${{ inputs.output_dark }}
+        OUTPUT_ADAPTIVE: ${{ inputs.output_adaptive }}
+        OUTPUT_HISTORY: ${{ inputs.output_history }}
+        OUTPUT_HISTORY_DARK: ${{ inputs.output_history_dark }}
+        OUTPUT_HISTORY_ADAPTIVE: ${{ inputs.output_history_adaptive }}
+        DAYS: ${{ inputs.days }}
+        HISTORY_WIDTH: ${{ inputs.history_width }}
+        LINK: ${{ inputs.link }}
+        MIN_WIDTH: ${{ inputs.min_width }}
+      run: |
+        ARGS=(--url "$STATUS_URL" --title "$TITLE" --output "$OUTPUT"
+              --output-dark "$OUTPUT_DARK" --min-width "$MIN_WIDTH")
+
+        if [ -n "$OUTPUT_ADAPTIVE" ]; then
+          ARGS+=(--output-adaptive "$OUTPUT_ADAPTIVE")
+        fi
+        if [ -n "$OUTPUT_HISTORY" ]; then
+          ARGS+=(--output-history "$OUTPUT_HISTORY")
+        fi
+        if [ -n "$OUTPUT_HISTORY_DARK" ]; then
+          ARGS+=(--output-history-dark "$OUTPUT_HISTORY_DARK")
+        fi
+        if [ -n "$OUTPUT_HISTORY_ADAPTIVE" ]; then
+          ARGS+=(--output-history-adaptive "$OUTPUT_HISTORY_ADAPTIVE")
+        fi
+        ARGS+=(--days "$DAYS" --history-width "$HISTORY_WIDTH")
+        if [ "${{ inputs.show_uptime }}" = "false" ]; then
+          ARGS+=(--no-uptime)
+        fi
+        if [ "${{ inputs.show_updated }}" = "false" ]; then
+          ARGS+=(--no-updated)
+        fi
+        if [ "${{ inputs.show_logo }}" = "false" ]; then
+          ARGS+=(--no-logo)
+        fi
+        if [ "${{ inputs.show_events }}" = "false" ]; then
+          ARGS+=(--no-events)
+        fi
+        if [ "${{ inputs.show_link }}" = "false" ]; then
+          ARGS+=(--no-link)
+        elif [ -n "$LINK" ]; then
+          ARGS+=(--link "$LINK")
+        fi
+        if [ "${{ inputs.static }}" = "true" ]; then
+          ARGS+=(--static)
+        fi
+
+        python3 "${{ github.action_path }}/generate.py" "${ARGS[@]}"
