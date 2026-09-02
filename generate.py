@@ -10,6 +10,7 @@ Stdlib only. Fetches `<status_url>/index.json` and renders:
 import argparse
 import base64
 import html
+from html.parser import HTMLParser
 import json
 import re
 import struct
@@ -343,13 +344,91 @@ def _downscale_rgba(w, h, rgba, box):
     return ow, oh, out
 
 
+def _srcset_url(srcset):
+    """Return the first URL in a srcset, unwrapping Better Stack's CDN URL."""
+    if not srcset:
+        return None
+    first = re.split(r",\s+(?=https://)", srcset, maxsplit=1)[0]
+    first = first.strip().split(None, 1)[0]
+    if not first:
+        return None
+    return "https://" + first.split("https://")[-1]
+
+
+class _LogoPictureParser(HTMLParser):
+    """Collect picture elements and their color-scheme sources."""
+
+    def __init__(self):
+        super().__init__()
+        self.picture = None
+        self.pictures = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        attributes = dict(attrs)
+        if tag == "picture" and self.picture is None:
+            self.picture = {"sources": [], "image": None}
+        elif tag == "source" and self.picture is not None:
+            self.picture["sources"].append({
+                "media": (attributes.get("media") or "").lower(),
+                "url": _srcset_url(attributes.get("srcset")),
+            })
+        elif tag == "img" and self.picture is not None:
+            self.picture["image"] = _srcset_url(attributes.get("src"))
+
+    def handle_endtag(self, tag):
+        if tag.lower() == "picture" and self.picture is not None:
+            self.pictures.append(self.picture)
+            self.picture = None
+
+
+def extract_dark_logo_url(page, light_logo_url=None):
+    """Extract the dark source paired with the page's light logo."""
+    parser = _LogoPictureParser()
+    parser.feed(page)
+    light_logo_url = _srcset_url(light_logo_url)
+    for picture in parser.pictures:
+        dark_url = next((source["url"] for source in picture["sources"]
+                         if "prefers-color-scheme" in source["media"]
+                         and "dark" in source["media"] and source["url"]),
+                        None)
+        if not dark_url:
+            continue
+        light_urls = [source["url"] for source in picture["sources"]
+                      if "prefers-color-scheme" in source["media"]
+                      and "light" in source["media"] and source["url"]]
+        if picture["image"]:
+            light_urls.append(picture["image"])
+        if not light_logo_url or light_logo_url in light_urls:
+            return dark_url
+    return None
+
+
+def fetch_dark_logo_url(base_url, timeout, light_logo_url=None):
+    """Fetch the status page HTML and return its native dark logo URL."""
+    try:
+        request = urllib.request.Request(
+            base_url.rstrip("/") + "/",
+            headers={
+                "User-Agent": "status-badge-action/2.1",
+                "Accept": "text/html",
+            },
+        )
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            page = response.read().decode("utf-8", "replace")
+        return extract_dark_logo_url(page, light_logo_url)
+    except Exception as error:
+        print(f"dark logo scrape failed: {error}")
+        return None
+
+
 def fetch_logo(logo_url, timeout):
-    """Download and inline the status page logo as a small PNG data URI."""
+    """Download one site-provided logo and return an inline data URI."""
     if not logo_url:
         return None
     try:
         request = urllib.request.Request(
-            logo_url, headers={"User-Agent": "status-badge-action/2.0"})
+            logo_url, headers={"User-Agent": "status-badge-action/2.1"})
         with urllib.request.urlopen(request, timeout=timeout) as response:
             data = response.read()
             ctype = (response.headers.get("Content-Type") or "").split(";")[0]
@@ -359,24 +438,38 @@ def fetch_logo(logo_url, timeout):
             w, h, rgba = decoded
             if max(w, h) > LOGO_MAX_SIDE:
                 w, h, rgba = _downscale_rgba(w, h, rgba, LOGO_MAX_SIDE)
+
             payload = _encode_png_rgba(w, h, rgba)
-            mime = "image/png"
-        elif len(data) <= LOGO_RAW_LIMIT:
+            if len(payload) > LOGO_RAW_LIMIT:
+                print(f"logo skipped: still too large after downscale")
+                return None
+            return "data:image/png;base64,%s" % base64.b64encode(payload).decode("ascii")
+
+        if len(data) <= LOGO_RAW_LIMIT:
             mime = ctype if ctype.startswith("image/") else "image/png"
-            payload = data
-        else:
-            print(f"logo skipped: unsupported or too large ({len(data)} bytes)")
-            return None
-
-        if len(payload) > LOGO_RAW_LIMIT:
-            print(f"logo skipped: still too large after downscale")
-            return None
-
-        return ("data:%s;base64,%s" % (mime, base64.b64encode(payload)
-                                       .decode("ascii")))
+            uri = ("data:%s;base64,%s"
+                   % (mime, base64.b64encode(data).decode("ascii")))
+            return uri
+        print(f"logo skipped: unsupported or too large ({len(data)} bytes)")
+        return None
     except Exception as error:
         print(f"logo fetch failed: {error}")
         return None
+
+
+def adaptive_logo_style(logo, logo_dark):
+    """Return CSS that switches between native light and dark logo assets."""
+    if not logo or not logo_dark or logo == logo_dark:
+        return ""
+    return """
+  <style>
+    .bsb-lg-l { display: inline; }
+    .bsb-lg-d { display: none; }
+    @media (prefers-color-scheme: dark) {
+      .bsb-lg-l { display: none; }
+      .bsb-lg-d { display: inline; }
+    }
+  </style>"""
 
 
 def format_updated(value):
@@ -591,7 +684,7 @@ def pick_history_resources(resources, limit=2):
 def build_history_svg(*, title, resources, days=90, updated=None,
                       state="unknown", width=800,
                       adaptive=False, dark=False, uid="bsbh", logo=None,
-                      link=None):
+                      logo_dark=None, link=None):
     if adaptive:
         bg, border, primary, secondary = ("var(--bg)", "var(--border)",
                                           "var(--primary)", "var(--secondary)")
@@ -636,7 +729,24 @@ def build_history_svg(*, title, resources, days=90, updated=None,
                  "series": [None] * days, "section": ""}]
 
     if logo:
-        mark = f"""
+        if adaptive and logo_dark and logo_dark != logo:
+            mark = f"""
+  <g>
+    <clipPath id="{uid}-logoclip">
+      <circle cx="{DOT_CX}" cy="24" r="11"/>
+    </clipPath>
+    <image class="bsb-lg-l" x="17" y="13" width="22" height="22" href="{logo}"
+      xlink:href="{logo}" clip-path="url(#{uid}-logoclip)"
+      preserveAspectRatio="xMidYMid meet"/>
+    <image class="bsb-lg-d" x="17" y="13" width="22" height="22" href="{logo_dark}"
+      xlink:href="{logo_dark}" clip-path="url(#{uid}-logoclip)"
+      preserveAspectRatio="xMidYMid meet" style="display:none"/>
+    <circle cx="{DOT_CX}" cy="24" r="11" fill="none" stroke="{border}"/>
+  </g>"""
+        else:
+            if dark and logo_dark:
+                logo = logo_dark
+            mark = f"""
   <g>
     <clipPath id="{uid}-logoclip">
       <circle cx="{DOT_CX}" cy="24" r="11"/>
@@ -804,6 +914,9 @@ def build_history_svg(*, title, resources, days=90, updated=None,
         style = f"""  <style>
     svg {{{chr(10)}      --bg: #FFFFFF; --border: #E4E7EC; --primary: #101828;{chr(10)}      --secondary: #667085; --nodata: #E5E7EB; --stext: #15803D;{chr(10)}    }}{chr(10)}    @media (prefers-color-scheme: dark) {{{chr(10)}      svg {{{chr(10)}        --bg: #0D1117; --border: #30363D; --primary: #F0F6FC;{chr(10)}        --secondary: #8B949E; --nodata: #262D36; --stext: #4ADE80;{chr(10)}      }}{chr(10)}    }}{chr(10)}  </style>"""
 
+    if adaptive:
+        style += adaptive_logo_style(logo, logo_dark)
+
     if link:
         href = html.escape(link, quote=True)
         anchor_open = (f'\n  <a href="{href}" xlink:href="{href}" '
@@ -918,7 +1031,7 @@ def icon_svg(kind: str, color: str, adaptive: bool):
 
 def build_svg(*, title, state, host, updated, uptime, online, total,
               adaptive=False, dark=False, animate=True, min_width=440,
-              uid="bsb", logo=None, event=None, link=None):
+              uid="bsb", logo=None, logo_dark=None, event=None, link=None):
     cfg = STATES.get(state, STATES["unknown"])
 
     if adaptive:
@@ -1025,9 +1138,29 @@ def build_svg(*, title, state, host, updated, uptime, online, total,
     else:
         anchor_open = anchor_close = ""
 
+    if adaptive:
+        style += adaptive_logo_style(logo, logo_dark)
+
     # ---- status mark: inline logo when available, pulsing dot otherwise
     if logo:
-        mark = f"""
+        if adaptive and logo_dark and logo_dark != logo:
+            mark = f"""
+  <g>
+    <clipPath id="{uid}-logoclip">
+      <circle cx="{DOT_CX}" cy="24" r="11"/>
+    </clipPath>
+    <image class="bsb-lg-l" x="17" y="13" width="22" height="22" href="{logo}"
+      xlink:href="{logo}" clip-path="url(#{uid}-logoclip)"
+      preserveAspectRatio="xMidYMid meet"/>
+    <image class="bsb-lg-d" x="17" y="13" width="22" height="22" href="{logo_dark}"
+      xlink:href="{logo_dark}" clip-path="url(#{uid}-logoclip)"
+      preserveAspectRatio="xMidYMid meet" style="display:none"/>
+    <circle cx="{DOT_CX}" cy="24" r="11" fill="none" stroke="{border}"/>
+  </g>"""
+        else:
+            if dark and logo_dark:
+                logo = logo_dark
+            mark = f"""
   <g>
     <clipPath id="{uid}-logoclip">
       <circle cx="{DOT_CX}" cy="24" r="11"/>
@@ -1162,8 +1295,18 @@ def main():
     state = data["state"] if data["state"] in STATES else "unknown"
     updated = None if args.no_updated else format_updated(data["updated_at"])
     uptime = None if args.no_uptime else data["uptime"]
-    logo = None if args.no_logo else fetch_logo(data.get("logo_url"),
-                                                args.timeout)
+    logo_light = None
+    logo_dark = None
+    if not args.no_logo:
+        logo_light = fetch_logo(data.get("logo_url"), args.timeout)
+        dark_url = fetch_dark_logo_url(args.url, args.timeout,
+                                       data.get("logo_url"))
+        if dark_url and dark_url != data.get("logo_url"):
+            logo_dark = fetch_logo(dark_url, args.timeout)
+        if not logo_light:
+            logo_light = logo_dark
+        if not logo_dark:
+            logo_dark = logo_light
     event = None if args.no_events else build_event(data)
     link = None if args.no_link else (args.link or args.url)
 
@@ -1177,7 +1320,8 @@ def main():
         total=data["total"],
         min_width=args.min_width,
         animate=not args.static,
-        logo=logo,
+        logo=logo_light,
+        logo_dark=logo_dark,
         event=event,
         link=link,
     )
@@ -1199,7 +1343,8 @@ def main():
         updated=format_updated(data["updated_at"]),
         state=state,
         width=args.history_width,
-        logo=logo,
+        logo=logo_light,
+        logo_dark=logo_dark,
         link=link,
     )
 

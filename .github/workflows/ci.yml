@@ -18,6 +18,9 @@ jobs:
       - name: Syntax check
         run: python -m py_compile generate.py
 
+      - name: Unit tests
+        run: python -m unittest -v test_generate.py
+
       - name: Validate action.yml
         run: |
           pip install pyyaml -q
