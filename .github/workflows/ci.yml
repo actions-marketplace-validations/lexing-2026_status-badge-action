@@ -20,6 +20,7 @@ jobs:
 
       - name: Validate action.yml
         run: |
+          pip install pyyaml -q
           python - <<'EOF'
           import yaml
           with open("action.yml") as f:
